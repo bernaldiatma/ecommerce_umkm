@@ -1,0 +1,55 @@
+name: ecommerce_umkm
+description: "A new Flutter project."
+
+
+
+publish_to: 'none'
+
+
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.9.2
+
+
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+
+  cupertino_icons: ^1.0.8
+  get: ^4.7.2 # kemungkinan besar digunakan sebagai klien HTTP yang disederhanakan untuk berkomunikasi dengan server (mengambil dan mengirim data ke API Node.js)
+  google_nav_bar: ^5.0.7 # untuk custom navigation bar
+  smooth_page_indicator: ^1.2.1 # Untuk menampilkan indikator titik-titik (dots) yang cantik di bawah PageView (slider gambar)
+  flutter_rating_bar: ^4.0.1 # Untuk menampilkan Peringkat Bintang (star rating) dengan mudah
+  font_awesome_flutter: ^10.12.0 # Menyediakan ribuan ikon tambahan (seperti ikon Facebook, Twitter, WhatsApp, dll.) yang tidak ada di paket ikon bawaan Flutter
+  animations: ^2.1.0 # Paket resmi dari tim Flutter yang berisi animasi-animasi kompleks yang sudah jadi
+  provider: ^6.1.5+1 # Ini adalah State Management (Manajer Data) Anda. Seperti yang sudah Anda tanyakan, ini adalah "Manajer Restoran" yang memegang data (daftar produk, isi keranjang, status login) dan memberikannya ke layar manapun yang membutuhkannya
+  dropdown_button2: ^2.3.9
+  flutter_cart: ^0.0.9 # Paket yang mengurus semua logika keranjang belanja (Cart)
+  get_storage: ^2.1.1 # Penyimpanan data lokal (di HP pengguna) yang sangat cepat dan sederhana
+  flutter_login: ^6.0.0 # Menyediakan satu halaman Login dan Sign Up yang sudah jadi dan cantik, lengkap dengan animasinya
+  webview_flutter: ^4.13.0 # Menampilkan halaman web (browser) di dalam aplikasi
+  onesignal_flutter: ^5.3.4 # Untuk Notifikasi Push (Push Notification)
+  google_fonts: ^6.3.2
+  intl: ^0.20.2
+
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+
+
+
+
+
+flutter:
+
+  uses-material-design: true
+
+  assets:
+    - assets/images/
+

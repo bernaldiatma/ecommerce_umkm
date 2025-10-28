@@ -1,0 +1,1 @@
+final ListCategory = ["semua","Fashion","Kerajinan","Sanck","Minuman", "Sayur","Buah"];
