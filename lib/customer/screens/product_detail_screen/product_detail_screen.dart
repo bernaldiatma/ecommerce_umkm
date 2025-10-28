@@ -23,7 +23,37 @@ class ProductDetailScreen extends StatelessWidget{
               height: 332,
               width: double.infinity, 
             ),
-            
+            SizedBox(height: 20),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Text(
+                    CurrencyFormat.convertToIdr(product.offerPrice != 0 ? product.offerPrice : product.price, 2),
+                    style: TextStyle(
+                      fontSize: 24,
+                      fontWeight: FontWeight.bold,
+                      color: product.offerPrice != 0? Colors.deepPurple : Colors.black,
+                    ),
+                  ),
+                  const SizedBox(width: 8),
+                  Visibility(
+                    visible: product.offerPrice != 0,
+                    child: Text(
+                      CurrencyFormat.convertToIdr(product.price, 2),
+                      style: const TextStyle(
+                        fontSize: 14,
+                        fontWeight: FontWeight.bold,
+                        decoration: TextDecoration.lineThrough,
+                        color: Colors.grey,
+                      ),
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                  ),
+                ],
+              ),
+            ),
           ],
         ),
       ),
