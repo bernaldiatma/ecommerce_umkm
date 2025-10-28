@@ -16,7 +16,14 @@ class ProductDetailScreen extends StatelessWidget{
       ),
       body: SafeArea(
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,       
           children: [
+            Image.asset(
+              product.imageProduct,
+              height: 332,
+              width: double.infinity, 
+            ),
+            
           ],
         ),
       ),
