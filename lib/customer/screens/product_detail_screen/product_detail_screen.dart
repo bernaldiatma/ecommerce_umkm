@@ -1,5 +1,6 @@
 import 'package:ecommerce_umkm/customer/models/product.dart';
 import 'package:ecommerce_umkm/utility/constants.dart';
+import 'package:ecommerce_umkm/utility/customer_utility/currency_format.dart';
 import 'package:flutter/material.dart';
 
 class ProductDetailScreen extends StatelessWidget{
