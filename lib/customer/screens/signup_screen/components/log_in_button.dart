@@ -1,9 +1,9 @@
-import 'package:ecommerce_umkm/customer/screens/signup_screen/signup_screen.dart';
+import 'package:ecommerce_umkm/customer/screens/login_screen/login_screen.dart';
 import 'package:ecommerce_umkm/utility/constants.dart';
 import 'package:flutter/material.dart';
 
-class SignUpButton extends StatelessWidget {
-  const SignUpButton({Key? key}) : super(key: key);
+class LogInButton extends StatelessWidget {
+  const LogInButton({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +22,7 @@ class SignUpButton extends StatelessWidget {
           onPressed: () {
             Navigator.pushReplacement(
               context,
-              MaterialPageRoute(builder: (_) => const SignUpScreen()),
+              MaterialPageRoute(builder: (_) => const LoginScreen()),
             );
           },
           child: Text(

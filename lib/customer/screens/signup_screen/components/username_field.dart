@@ -2,11 +2,13 @@ import 'package:ecommerce_umkm/utility/constants.dart';
 import 'package:flutter/material.dart';
 
 class UsernameField extends StatelessWidget {
-   const UsernameField({Key? key}) : super(key: key);
+  final Function(String username) onUsernameChanged;
+   const UsernameField({Key? key, required this.onUsernameChanged}) : super(key: key);
 
    @override
   Widget build(BuildContext context) {
      return TextField(
+       style: TextStyle(color: Colors.black),
        decoration: InputDecoration(
          labelText: "Username",
          labelStyle: TextStyle(color: Colors.grey, fontWeight: FontWeight.w500),
@@ -22,6 +24,7 @@ class UsernameField extends StatelessWidget {
          ),
          prefixIcon: Icon(Icons.person_outlined, color: Colors.grey),
        ),
+       onChanged: onUsernameChanged,
      );
    }
 }

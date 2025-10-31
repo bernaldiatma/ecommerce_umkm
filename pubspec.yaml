@@ -20,7 +20,7 @@ dependencies:
 
 
   cupertino_icons: ^1.0.8
-  get: ^4.7.2 # kemungkinan besar digunakan sebagai klien HTTP yang disederhanakan untuk berkomunikasi dengan server (mengambil dan mengirim data ke API Node.js)
+
   google_nav_bar: ^5.0.7 # untuk custom navigation bar
   smooth_page_indicator: ^1.2.1 # Untuk menampilkan indikator titik-titik (dots) yang cantik di bawah PageView (slider gambar)
   flutter_rating_bar: ^4.0.1 # Untuk menampilkan Peringkat Bintang (star rating) dengan mudah
@@ -35,6 +35,9 @@ dependencies:
   onesignal_flutter: ^5.3.4 # Untuk Notifikasi Push (Push Notification)
   google_fonts: ^6.3.2
   intl: ^0.20.2
+  readmore: ^3.0.0
+  http: ^1.5.0
+
 
 
 dev_dependencies:

@@ -1,45 +1,51 @@
 import 'dart:convert';
+import 'package:ecommerce_umkm/customer/models/user.dart';
 import 'package:ecommerce_umkm/utility/constants.dart';
-import 'package:get/get.dart';
-import 'package:get/get_connect.dart';
+import 'package:http/http.dart' as http;
 
 class HttpService {
-  final String baseUrl = MAIN_URL;
+  final String baseUrl = BASE_URL;
 
-  Future<Response> getItems({required String endpointUrl}) async {
-    try {
-      return await GetConnect().get('$baseUrl/$endpointUrl');
-    } catch (e) {
-      return Response(body: json.encode({'error': e.toString()}), statusCode: 500);
+  Future<dynamic> login(String email, String password) async {
+    final response = await http.post(
+
+      Uri.parse('$BASE_URL/api/user/login'), // alamat API
+
+      body: {"email" : email, 'password' : password}, //parameter yang dikirim ke API
+
+    );
+
+    if (response.statusCode == 200) {  // 200 artinya status ok
+
+      return{
+        'status' : true,
+        'user' : User.fromJson(jsonDecode(response.body) as Map<String, dynamic>)
+      };
+
+    } else {
+      return {'status' : false};
     }
   }
 
 
-  Future<Response> addItem({required String endpointUrl, required dynamic itemData}) async {
-    try {
-      final response = await GetConnect().post('$baseUrl/$endpointUrl',itemData);
-      print(response.body);
-      return response;
-    } catch (e) {
-      print('Error: $e');
-      return Response(body: json.encode({'message': e.toString()}), statusCode: 500);
-    }
-  }
+  Future<dynamic> register(String username, String email, String password) async {
 
+    final response = await http.post(
 
-  Future<Response> updateItem({required String endpointUrl, required String itemId, required dynamic itemData}) async {
-    try {
-      return await GetConnect().put('$baseUrl/$endpointUrl/$itemId', itemData);
-    } catch (e) {
-      return Response(body: json.encode({'message': e.toString()}), statusCode: 500);
-    }
-  }
+      Uri.parse('$BASE_URL/api/user/'),
 
-  Future<Response> deleteItem({required String endpointUrl, required String itemId}) async {
-    try {
-      return await GetConnect().delete('$baseUrl/$endpointUrl/$itemId');
-    } catch (e) {
-      return Response(body: json.encode({'message': e.toString()}), statusCode: 500);
+      body: {"username" : username, "email" : email, 'password' : password},
+
+    );
+    print(response.body);
+    if (response.statusCode == 200) {
+      return {
+        'status' : true,
+        'user' : jsonDecode(response.body) as Map<String, dynamic>
+      };
+
+    } else {
+      return { 'status' : false,};
     }
   }
 }

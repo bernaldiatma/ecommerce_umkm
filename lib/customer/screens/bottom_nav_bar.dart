@@ -2,7 +2,7 @@ import 'package:ecommerce_umkm/customer/screens/home_screen/home_screen.dart';
 import 'package:ecommerce_umkm/customer/screens/order_screen/order_screen.dart';
 import 'package:ecommerce_umkm/customer/screens/product_favorite_screen/product_favorite_screen.dart';
 import 'package:ecommerce_umkm/customer/screens/profile_screen/profile_screen.dart';
-import 'package:ecommerce_umkm/utility/customer_utility/google_nav_bar.dart';
+import 'package:ecommerce_umkm/widget/google_nav_bar.dart';
 import 'package:flutter/material.dart';
 
 class BottomNavBar extends StatefulWidget {

@@ -3,7 +3,8 @@ import 'package:ecommerce_umkm/customer/screens/home_screen/home_screen.dart';
 import 'package:flutter/material.dart';
 
 class LoginButton extends StatelessWidget {
-  const LoginButton({Key? key}) : super(key: key);
+  final Function() login;
+  const LoginButton({Key? key, required this.login}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -15,12 +16,7 @@ class LoginButton extends StatelessWidget {
           borderRadius: BorderRadius.circular(8),
         ),
       ),
-      onPressed: () {
-        Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(builder: (_) => BottomNavBar()),
-        );
-      },
+      onPressed: login,
       child: Text(
         "Login",
         style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white),

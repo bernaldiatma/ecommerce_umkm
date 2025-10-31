@@ -1,6 +1,7 @@
 import 'dart:ui';
-import 'package:ecommerce_umkm/customer/core/data_provider.dart';
-import 'package:ecommerce_umkm/customer/screens/login_screen/login_screen.dart';
+import 'package:ecommerce_umkm/core/data_provider.dart';
+import 'package:ecommerce_umkm/customer/screens/bottom_nav_bar.dart';
+import 'package:ecommerce_umkm/input_addr.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_cart/cart.dart';
 import 'package:get/get.dart';
@@ -45,7 +46,9 @@ class MyApp extends StatelessWidget {
       theme: ThemeData.light().copyWith(
         textTheme: GoogleFonts.urbanistTextTheme(Theme.of(context).textTheme).apply(bodyColor: Colors.white),
       ),
-      home: const LoginScreen(),
+      //home: const LoginScreen(),
+      //home: const BottomNavBar(),
+      home: const InputAddr(),
     );
   }
 }

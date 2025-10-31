@@ -1,5 +1,5 @@
 import 'package:ecommerce_umkm/customer/models/product.dart';
-import 'package:ecommerce_umkm/utility/customer_utility/currency_format.dart';
+import 'package:ecommerce_umkm/utility/currency_format.dart';
 
 import 'package:flutter/material.dart';
 
@@ -36,7 +36,7 @@ class ProductCard extends StatelessWidget {
               product.name,
               style: TextStyle(
                 fontSize: 16,
-                fontWeight: FontWeight.bold,
+                //fontWeight: FontWeight.bold,
                 color: Colors.black,
               ),
               maxLines: 2,
@@ -44,39 +44,55 @@ class ProductCard extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 12),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                product.offerPrice != 0
-                    ? Text(
-                        CurrencyFormat.convertToIdr(product.price, 2),
-                        style: TextStyle(
-                          fontSize: 12,
-                          fontWeight: FontWeight.bold,
-                          decoration: TextDecoration.lineThrough,
-                          color: Colors.grey,
-                        ),
-                      )
-                    : SizedBox.shrink(),
-                if (product.offerPrice == 0) SizedBox(height: 8),
                 Text(
-                  CurrencyFormat.convertToIdr(
-                    product.offerPrice != 0
-                        ? product.offerPrice
-                        : product.price,
-                    2,
-                  ),
+                  CurrencyFormat.convertToIdr(product.price, 2),
                   style: TextStyle(
-                    fontSize: 16,
+                    fontSize: 14,
                     fontWeight: FontWeight.bold,
-                    color: Colors.black,
+                    color: Colors.cyan,
                   ),
-                  overflow: TextOverflow.ellipsis,
                 ),
               ],
             ),
           ),
+          // Padding(
+          //   padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+          //   child: Column(
+          //     crossAxisAlignment: CrossAxisAlignment.start,
+          //     children: [
+          //       product.offerPrice != 0
+          //           ? Text(
+          //               CurrencyFormat.convertToIdr(product.price, 2),
+          //               style: TextStyle(
+          //                 fontSize: 12,
+          //                 fontWeight: FontWeight.bold,
+          //                 decoration: TextDecoration.lineThrough,
+          //                 color: Colors.grey,
+          //               ),
+          //             )
+          //           : SizedBox.shrink(),
+          //       if (product.offerPrice == 0) SizedBox(height: 8),
+          //       Text(
+          //         CurrencyFormat.convertToIdr(
+          //           product.offerPrice != 0
+          //               ? product.offerPrice
+          //               : product.price,
+          //           2,
+          //         ),
+          //         style: TextStyle(
+          //           fontSize: 16,
+          //           fontWeight: FontWeight.bold,
+          //           color: Colors.black,
+          //         ),
+          //         overflow: TextOverflow.ellipsis,
+          //       ),
+          //     ],
+          //   ),
+          // ),
         ],
       ),
     );

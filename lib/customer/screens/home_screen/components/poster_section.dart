@@ -1,4 +1,4 @@
-import 'package:ecommerce_umkm/customer/core/data_provider.dart';
+import 'package:ecommerce_umkm/core/data_provider.dart';
 import 'package:ecommerce_umkm/customer/models/poster.dart';
 import 'package:ecommerce_umkm/utility/customer_utility/app_data.dart';
 import 'package:flutter/material.dart';
