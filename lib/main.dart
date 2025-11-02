@@ -47,8 +47,8 @@ class MyApp extends StatelessWidget {
         textTheme: GoogleFonts.urbanistTextTheme(Theme.of(context).textTheme).apply(bodyColor: Colors.white),
       ),
       //home: const LoginScreen(),
-      //home: const BottomNavBar(),
-      home: const InputAddr(),
+      home: const BottomNavBar(),
+      //home: const InputAddr(),
     );
   }
 }

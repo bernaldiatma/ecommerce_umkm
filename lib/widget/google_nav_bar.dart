@@ -37,7 +37,7 @@ class GoogleNavBar extends StatelessWidget {
           tabs: const [
             GButton(icon: Icons.home_outlined, text: "Beranda"),
             GButton(icon: Icons.favorite_outline, text: "Favorit"),
-            GButton(icon: Icons.shopping_cart_outlined, text: "Keranjang"),
+            GButton(icon: Icons.article_outlined, text: "Pesanan"),
             GButton(icon: Icons.person_outlined, text: "Profil"),
           ],
         ),

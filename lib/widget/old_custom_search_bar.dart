@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 
-class CustomSearchBar extends StatefulWidget{
+class OldCustomSearchBar extends StatefulWidget{
   final TextEditingController controller;
   final void Function(String)? onChanged;
 
-  const CustomSearchBar({super.key, required this.controller, this.onChanged});
+  const OldCustomSearchBar({super.key, required this.controller, this.onChanged});
 
   @override
-  State<CustomSearchBar> createState() => _CustomSearchBarState();
+  State<OldCustomSearchBar> createState() => _OldCustomSearchBarState();
 }
 
-class _CustomSearchBarState extends State<CustomSearchBar> {
+class _OldCustomSearchBarState extends State<OldCustomSearchBar> {
   bool isExpanded = false;
   final FocusNode _focusNode = FocusNode();
 
@@ -36,7 +36,7 @@ class _CustomSearchBarState extends State<CustomSearchBar> {
           borderRadius: BorderRadius.circular(10),
           color: isExpanded ? Colors.grey.shade300 : Colors.white,
         ),
-        height: 50,
+        height: 48,
         padding: const EdgeInsets.symmetric(horizontal: 15),
         child: FocusScope(
           node: FocusScopeNode(),
@@ -46,6 +46,7 @@ class _CustomSearchBarState extends State<CustomSearchBar> {
               const SizedBox(width: 10),
               Expanded(
                 child: TextField(
+                  style: TextStyle(color: Colors.black),
                   focusNode: _focusNode,
                   controller: widget.controller,
                   decoration: const InputDecoration(

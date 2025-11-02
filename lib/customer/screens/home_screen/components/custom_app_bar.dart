@@ -1,6 +1,10 @@
+import 'package:ecommerce_umkm/customer/models/product.dart';
+import 'package:ecommerce_umkm/customer/screens/cart_screen/cart_screen.dart';
+import 'package:ecommerce_umkm/customer/screens/home_screen/components/custom_search_bar.dart';
+import 'package:ecommerce_umkm/customer/screens/notification_screen/notification_screen.dart';
 import 'package:ecommerce_umkm/utility/constants.dart';
 import 'package:flutter/material.dart';
-import 'package:ecommerce_umkm/widget/custom_search_bar.dart';
+import 'package:ecommerce_umkm/widget/old_custom_search_bar.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:ecommerce_umkm/widget/app_bar_action_button.dart';
 
@@ -28,19 +32,44 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                GestureDetector(
-                  onTap: () {
-                    // TODO: Arahkan ke halaman notifikasi
-                  },
-                  child: CircleAvatar(
-                    radius: 26,
-                    backgroundColor: Colors.white,
-                    child: Icon(
-                      Icons.notifications_none_outlined,
-                      size: 30,
-                      color: Colors.black,
+                Row(
+                  children: [
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (_) => CartScreen()),
+                        );
+                      },
+                      child: CircleAvatar(
+                        radius: 26,
+                        backgroundColor: Colors.white,
+                        child: Icon(
+                          Icons.shopping_cart_outlined,
+                          size: 30,
+                          color: Colors.black,
+                        ),
+                      ),
                     ),
-                  ),
+                    SizedBox(width: 10),
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (_) => NotificationScreen()),
+                        );
+                      },
+                      child: CircleAvatar(
+                        radius: 26,
+                        backgroundColor: Colors.white,
+                        child: Icon(
+                          Icons.notifications_none_outlined,
+                          size: 30,
+                          color: Colors.black,
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ],
             ),
@@ -58,13 +87,16 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                     Scaffold.of(context).openDrawer();
                   },
                 ),
+                // Expanded(
+                //   child: CustomSearchBar(
+                //     controller: TextEditingController(),
+                //     onChanged: (val) {
+                //       //TODO: Buat filterProduct dulu
+                //     },
+                //   ),
+                // ),
                 Expanded(
-                  child: CustomSearchBar(
-                    controller: TextEditingController(),
-                    onChanged: (val) {
-                      //TODO: Buat filterProduct dulu
-                    },
-                  ),
+                  child: CustomSearchBar(allProducts: ProductList),
                 ),
               ],
             ),
