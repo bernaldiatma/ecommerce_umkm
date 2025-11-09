@@ -1,6 +1,10 @@
 import 'dart:ui';
 import 'package:ecommerce_umkm/core/data_provider.dart';
+import 'package:ecommerce_umkm/customer/models/product_provider.dart';
 import 'package:ecommerce_umkm/customer/screens/bottom_nav_bar.dart';
+import 'package:ecommerce_umkm/customer/screens/cart_screen/provider/cart_provider.dart';
+import 'package:ecommerce_umkm/customer/screens/order_screen/provider/order_provider.dart';
+import 'package:ecommerce_umkm/customer/screens/product_favorite_screen/provider/favorite_provider.dart';
 import 'package:ecommerce_umkm/input_addr.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_cart/cart.dart';
@@ -23,6 +27,10 @@ Future<void> main() async {
     MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (context) => DataProvider()),
+        ChangeNotifierProvider(create: (context) => FavoriteProvider()),
+        ChangeNotifierProvider(create: (context) => CartProvider()),
+        ChangeNotifierProvider(create: (context) => OrderProvider()),
+        ChangeNotifierProvider(create: (context) => ProductProvider()),
       ],
       child: const MyApp(),
     ),

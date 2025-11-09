@@ -5,6 +5,8 @@ class Product {
   double price;
   double offerPrice;
   String imageProduct;
+  int quantity;
+  final String storeName;
 
   Product({
     required this.name,
@@ -13,6 +15,8 @@ class Product {
     required this.price,
     required this.offerPrice,
     required this.imageProduct,
+    required this.quantity,
+    required this.storeName,
   });
 }
 
@@ -24,6 +28,8 @@ var ProductList = [
     price: 100000,
     offerPrice: 0,
     imageProduct: "assets/images/sepatu_kulit.jpg",
+    quantity: 1,
+    storeName: "Fasvit Official Store",
   ),
   Product(
     name: "Vasvit - Sepatu Kulit Pria",
@@ -32,6 +38,8 @@ var ProductList = [
     price: 100000,
     offerPrice: 80000,
     imageProduct: "assets/images/sepatu_kulit.jpg",
+    quantity: 1,
+    storeName: "Fasvit Official Store",
   ),
   Product(
     name: "Vasvit - Sepatu Kulit Pria",
@@ -40,6 +48,8 @@ var ProductList = [
     price: 200000000,
     offerPrice: 180000000,
     imageProduct: "assets/images/sepatu_kulit.jpg",
+    quantity: 1,
+    storeName: "Fasvit Official Store",
   ),
   Product(
     name: "Vasvit - Sepatu Kulit Pria",
@@ -48,6 +58,8 @@ var ProductList = [
     price: 100000,
     offerPrice: 80000,
     imageProduct: "assets/images/sepatu_kulit.jpg",
+    quantity: 1,
+    storeName: "Samari Shoes Store",
   ),
   Product(
     name: "Vasvit - Sepatu Kulit Pria",
@@ -56,6 +68,8 @@ var ProductList = [
     price: 100000,
     offerPrice: 80000,
     imageProduct: "assets/images/sepatu_kulit.jpg",
+    quantity: 1,
+    storeName: "Samari Shoes Store",
   ),
   Product(
     name: "Vasvit - Sepatu Kulit Pria",
@@ -64,5 +78,7 @@ var ProductList = [
     price: 100000,
     offerPrice: 80000,
     imageProduct: "assets/images/sepatu_kulit.jpg",
+    quantity: 1,
+    storeName: "Samari Shoes Store",
   ),
 ];

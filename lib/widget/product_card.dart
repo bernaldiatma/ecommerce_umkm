@@ -3,11 +3,17 @@ import 'package:ecommerce_umkm/utility/currency_format.dart';
 
 import 'package:flutter/material.dart';
 
-class ProductCard extends StatelessWidget {
+
+class ProductCard extends StatefulWidget {
   final Product product;
 
   const ProductCard(Key? key, this.product) : super(key: key);
 
+  @override
+  State<ProductCard> createState() => _ProductCardState();
+}
+
+class _ProductCardState extends State<ProductCard> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -24,7 +30,7 @@ class ProductCard extends StatelessWidget {
               topRight: Radius.circular(12),
             ),
             child: Image.asset(
-              product.imageProduct,
+              widget.product.imageProduct,
               height: 190,
               width: double.infinity,
               fit: BoxFit.fill,
@@ -33,7 +39,7 @@ class ProductCard extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(top: 8, left: 8, right: 8),
             child: Text(
-              product.name,
+              widget.product.name,
               style: TextStyle(
                 fontSize: 16,
                 //fontWeight: FontWeight.bold,
@@ -49,7 +55,7 @@ class ProductCard extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Text(
-                  CurrencyFormat.convertToIdr(product.price, 2),
+                  CurrencyFormat.convertToIdr(widget.product.price, 2),
                   style: TextStyle(
                     fontSize: 14,
                     fontWeight: FontWeight.bold,

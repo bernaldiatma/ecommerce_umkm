@@ -87,7 +87,7 @@ class CustomSearchDelegate extends SearchDelegate {
       }
     }
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20),
+      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
       child: GridView.builder(
         itemCount: matchQuery.length,
           shrinkWrap: true,

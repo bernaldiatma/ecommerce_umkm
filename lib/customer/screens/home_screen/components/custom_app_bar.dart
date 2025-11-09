@@ -10,7 +10,7 @@ import 'package:ecommerce_umkm/widget/app_bar_action_button.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
-  Size get preferredSize => const Size.fromHeight(140);
+  Size get preferredSize => const Size.fromHeight(130);
 
   const CustomAppBar({Key? key}) : super(key: key);
 
@@ -42,11 +42,11 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                         );
                       },
                       child: CircleAvatar(
-                        radius: 26,
+                        radius: 22,
                         backgroundColor: Colors.white,
                         child: Icon(
                           Icons.shopping_cart_outlined,
-                          size: 30,
+                          size: 24,
                           color: Colors.black,
                         ),
                       ),
@@ -60,11 +60,11 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                         );
                       },
                       child: CircleAvatar(
-                        radius: 26,
+                        radius: 22,
                         backgroundColor: Colors.white,
                         child: Icon(
                           Icons.notifications_none_outlined,
-                          size: 30,
+                          size: 24,
                           color: Colors.black,
                         ),
                       ),
