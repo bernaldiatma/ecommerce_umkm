@@ -1,3 +1,4 @@
+import 'package:ecommerce_umkm/customer/screens/cart_screen/cart_screen.dart';
 import 'package:ecommerce_umkm/customer/screens/order_screen/components/order_card.dart';
 import 'package:ecommerce_umkm/customer/screens/order_screen/provider/order_provider.dart';
 import 'package:ecommerce_umkm/utility/constants.dart';
@@ -17,13 +18,48 @@ class OrderScreen extends StatelessWidget {
           children: [
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-              child: Text(
-                "Pesanan",
-                style: TextStyle(
-                  fontSize: 26,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.grey.shade700,
-                ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    "Pesanan",
+                    style: TextStyle(
+                      fontSize: 26,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.grey.shade700,
+                    ),
+                  ),
+                  IconButton(
+                    icon: Icon(
+                      Icons.shopping_cart_outlined,
+                      size: 28,
+                      color: Colors.grey.shade700,
+                    ),
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (_) => CartScreen()),
+                      );
+                    },
+                  ),
+                  // GestureDetector(
+                  //   onTap: () {
+                  //     Navigator.push(
+                  //       context,
+                  //       MaterialPageRoute(builder: (_) => CartScreen()),
+                  //     );
+                  //   },
+                  //   child: CircleAvatar(
+                  //     radius: 22,
+                  //     backgroundColor: Colors.white,
+                  //     child: Icon(
+                  //       Icons.shopping_cart_outlined,
+                  //       size: 24,
+                  //       color: Colors.black,
+                  //     ),
+                  //   ),
+                  // ),
+                ],
               ),
             ),
             Consumer<OrderProvider>(

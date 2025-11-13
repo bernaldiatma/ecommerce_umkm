@@ -42,15 +42,15 @@ class _ProductCardState extends State<ProductCard> {
               widget.product.name,
               style: TextStyle(
                 fontSize: 16,
-                //fontWeight: FontWeight.bold,
                 color: Colors.black,
               ),
               maxLines: 2,
               overflow: TextOverflow.ellipsis,
             ),
           ),
+          SizedBox(height: 8),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 12),
+            padding: const EdgeInsets.symmetric(horizontal: 8),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
@@ -63,6 +63,20 @@ class _ProductCardState extends State<ProductCard> {
                   ),
                 ),
               ],
+            ),
+          ),
+          SizedBox(height: 8),
+          Padding(
+            padding: const EdgeInsets.symmetric(
+              horizontal: 8
+            ),
+            child: Text(
+              widget.product.storeName,
+              style: TextStyle(
+                fontSize: 12,
+                color: Colors.grey.shade700,
+              ),
+              overflow: TextOverflow.ellipsis,
             ),
           ),
           // Padding(

@@ -14,7 +14,7 @@ class PosterSection extends StatelessWidget{
       child: Consumer<DataProvider>(
         builder: (context, dataProvider, child) {
           return ListView.builder(
-            padding: const EdgeInsets.symmetric(vertical: 10),
+            padding: const EdgeInsets.only(top: 10, bottom: 10, right: 20),
             shrinkWrap: true,
             scrollDirection: Axis.horizontal,
             //itemCount di bawah untuk sementara aja

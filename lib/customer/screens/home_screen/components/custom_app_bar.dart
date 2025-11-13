@@ -3,6 +3,7 @@ import 'package:ecommerce_umkm/customer/screens/cart_screen/cart_screen.dart';
 import 'package:ecommerce_umkm/customer/screens/home_screen/components/custom_search_bar.dart';
 import 'package:ecommerce_umkm/customer/screens/notification_screen/notification_screen.dart';
 import 'package:ecommerce_umkm/utility/constants.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:ecommerce_umkm/widget/old_custom_search_bar.dart';
 import 'package:get_storage/get_storage.dart';

@@ -6,6 +6,8 @@ import 'package:ecommerce_umkm/customer/screens/cart_screen/provider/cart_provid
 import 'package:ecommerce_umkm/customer/screens/order_screen/provider/order_provider.dart';
 import 'package:ecommerce_umkm/customer/screens/product_favorite_screen/provider/favorite_provider.dart';
 import 'package:ecommerce_umkm/input_addr.dart';
+import 'package:ecommerce_umkm/seller/screens/seller_home_screen/seller_home_screen.dart';
+import 'package:ecommerce_umkm/seller/screens/seller_order_list_screen/provider/seller_order_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_cart/cart.dart';
 import 'package:get/get.dart';
@@ -31,6 +33,7 @@ Future<void> main() async {
         ChangeNotifierProvider(create: (context) => CartProvider()),
         ChangeNotifierProvider(create: (context) => OrderProvider()),
         ChangeNotifierProvider(create: (context) => ProductProvider()),
+        ChangeNotifierProvider(create: (context) => SellerOrderProvider()),
       ],
       child: const MyApp(),
     ),
@@ -55,8 +58,9 @@ class MyApp extends StatelessWidget {
         textTheme: GoogleFonts.urbanistTextTheme(Theme.of(context).textTheme).apply(bodyColor: Colors.white),
       ),
       //home: const LoginScreen(),
-      home: const BottomNavBar(),
+      //home: const BottomNavBar(),
       //home: const InputAddr(),
+      home: SellerHomeScreen(),
     );
   }
 }

@@ -39,23 +39,36 @@ class _ProductFavoriteScreenState extends State<ProductFavoriteScreen> {
                       color: Colors.grey.shade700,
                     ),
                   ),
-                  GestureDetector(
-                    onTap: () {
+                  IconButton(
+                    icon: Icon(
+                      Icons.shopping_cart_outlined,
+                      size: 28,
+                      color: Colors.grey.shade700,
+                    ),
+                    onPressed: () {
                       Navigator.push(
                         context,
                         MaterialPageRoute(builder: (_) => CartScreen()),
                       );
                     },
-                    child: CircleAvatar(
-                      radius: 22,
-                      backgroundColor: Colors.white,
-                      child: Icon(
-                        Icons.shopping_cart_outlined,
-                        size: 24,
-                        color: Colors.black,
-                      ),
-                    ),
                   ),
+                  // GestureDetector(
+                  //   onTap: () {
+                  //     Navigator.push(
+                  //       context,
+                  //       MaterialPageRoute(builder: (_) => CartScreen()),
+                  //     );
+                  //   },
+                  //   child: CircleAvatar(
+                  //     radius: 22,
+                  //     backgroundColor: Colors.white,
+                  //     child: Icon(
+                  //       Icons.shopping_cart_outlined,
+                  //       size: 24,
+                  //       color: Colors.black,
+                  //     ),
+                  //   ),
+                  // ),
                 ],
               ),
             ),
