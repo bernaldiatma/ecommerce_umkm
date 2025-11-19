@@ -1,4 +1,4 @@
-import 'package:ecommerce_umkm/customer/models/user.dart';
+import 'package:ecommerce_umkm/models/user.dart';
 import 'package:ecommerce_umkm/customer/screens/home_screen/home_screen.dart';
 import 'package:ecommerce_umkm/customer/screens/order_screen/order_screen.dart';
 import 'package:ecommerce_umkm/customer/screens/product_favorite_screen/product_favorite_screen.dart';

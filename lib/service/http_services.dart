@@ -1,5 +1,5 @@
 import 'dart:convert';
-import 'package:ecommerce_umkm/customer/models/user.dart';
+import 'package:ecommerce_umkm/models/user.dart';
 import 'package:ecommerce_umkm/utility/constants.dart';
 import 'package:http/http.dart' as http;
 
