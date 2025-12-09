@@ -4,10 +4,12 @@ import 'package:ecommerce_umkm/core/product_provider.dart';
 import 'package:ecommerce_umkm/core/cart_provider.dart';
 import 'package:ecommerce_umkm/core/order_provider.dart';
 import 'package:ecommerce_umkm/core/favorite_provider.dart';
+import 'package:ecommerce_umkm/presentation/expedition/expedition_screen.dart';
 import 'package:ecommerce_umkm/presentation/login_screen/login_screen.dart';
 import 'package:ecommerce_umkm/presentation/customer/screens/home_customer.dart';
 import 'package:ecommerce_umkm/core/seller_order_provider.dart';
 import 'package:ecommerce_umkm/presentation/seller/screens/home_seller.dart';
+import 'package:ecommerce_umkm/presentation/splash_screeen/splash_screen.dart';
 import 'package:ecommerce_umkm/service/api_services.dart';
 import 'package:ecommerce_umkm/service/user_service.dart';
 import 'package:ecommerce_umkm/utility/prefs.dart';
@@ -57,7 +59,6 @@ class MyApp extends StatelessWidget {
     }
   }
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
@@ -80,7 +81,9 @@ class MyApp extends StatelessWidget {
                 return HomeCustomer();
               }
             }
-            return LoginScreen();
+            //return LoginScreen();
+            //return SplashScreen(key);
+            return ExpeditionScreen(key);
           });
         },
       ),
