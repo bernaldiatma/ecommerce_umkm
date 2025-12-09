@@ -11,13 +11,8 @@ class UserDetail {
     required this.photo,
   });
 
-  factory UserDetail.formJson(Map<String, dynamic> json) => switch (json) {
-    {
-      '_id': String id,
-      'name': String name,
-      'address': String address,
-      'photo': String photo,
-    } =>
+  factory UserDetail.fromJson(Map<String, dynamic> json) => switch (json) {
+    {'_id': String id, 'name': String name, 'address': String address, 'photo': String photo} =>
       UserDetail(id: id, name: name, address: address, photo: photo),
     _ => throw const FormatException('Failed to load UserDetail'),
   };

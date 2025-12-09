@@ -1,25 +1,15 @@
+import 'package:ecommerce_umkm/models/product.dart';
+import 'package:ecommerce_umkm/models/user.dart';
+
 class Cart {
-  final String idProduct;
-  final int amount;
-  final double totalPrice;
+  final User user;
+  final Product product;
+  int qty;
 
-  const Cart({
-    required this.idProduct,
-    required this.amount,
-    required this.totalPrice,
-  });
+  Cart({required this.user, required this.product, required this.qty});
 
-  factory Cart.formJson(Map<String, dynamic> json) => switch (json) {
-  {
-    '_id_product': String idProduct,
-  'amount': int amount,
-  'total_price': double totalPrice,
-  } =>
-  Cart(
-    idProduct: idProduct,
-    amount: amount,
-    totalPrice: totalPrice,
-  ),
-  _=> throw const FormatException('Failed to load Cart 6'),
+  factory Cart.fromJson(Map<String, dynamic> json) => switch (json) {
+    {'user': User u, 'product': Product p, 'qty': int qty} => Cart(user: u, product: p, qty: qty),
+    _ => throw const FormatException('Failed to load Cart'),
   };
 }

@@ -1,7 +1,8 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 
-String BASE_URL = 'http://10.0.2.2:4000';
+String BASE_URL = 'http://157.15.40.58:8888';
+// String BASE_URL = 'http://192.168.0.100:4000';
 
 const FAVORITE_PRODUCT_BOX = 'FAVORITE_PRODUCT_BOX';
 const USER_INFO_BOX = 'USER_INFO_BOX';

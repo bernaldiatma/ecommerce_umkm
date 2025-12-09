@@ -1,66 +1,89 @@
 import 'dart:ui';
-import 'package:ecommerce_umkm/core/data_provider.dart';
-import 'package:ecommerce_umkm/customer/models/product_provider.dart';
-import 'package:ecommerce_umkm/customer/screens/bottom_nav_bar.dart';
-import 'package:ecommerce_umkm/customer/screens/cart_screen/provider/cart_provider.dart';
-import 'package:ecommerce_umkm/customer/screens/order_screen/provider/order_provider.dart';
-import 'package:ecommerce_umkm/customer/screens/product_favorite_screen/provider/favorite_provider.dart';
-import 'package:ecommerce_umkm/input_addr.dart';
-import 'package:ecommerce_umkm/seller/screens/seller_home_screen/seller_home_screen.dart';
-import 'package:ecommerce_umkm/seller/screens/seller_order_list_screen/provider/seller_order_provider.dart';
+import 'package:ecommerce_umkm/core/user_provider.dart';
+import 'package:ecommerce_umkm/core/product_provider.dart';
+import 'package:ecommerce_umkm/core/cart_provider.dart';
+import 'package:ecommerce_umkm/core/order_provider.dart';
+import 'package:ecommerce_umkm/core/favorite_provider.dart';
+import 'package:ecommerce_umkm/presentation/login_screen/login_screen.dart';
+import 'package:ecommerce_umkm/presentation/customer/screens/home_customer.dart';
+import 'package:ecommerce_umkm/core/seller_order_provider.dart';
+import 'package:ecommerce_umkm/presentation/seller/screens/home_seller.dart';
+import 'package:ecommerce_umkm/service/api_services.dart';
+import 'package:ecommerce_umkm/service/user_service.dart';
+import 'package:ecommerce_umkm/utility/prefs.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_cart/cart.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:onesignal_flutter/onesignal_flutter.dart';
 import 'package:provider/provider.dart';
+
+import 'models/user.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await GetStorage.init();
   var cart = FlutterCart();
-  //TODO: should complete add one signal app id
-  OneSignal.initialize("YOUR_ONE_SIGNAL_APP_ID");
-  OneSignal.Notifications.requestPermission(true);
   await cart.initializeCart(isPersistenceSupportEnabled: true);
 
   runApp(
     MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (context) => DataProvider()),
-        ChangeNotifierProvider(create: (context) => FavoriteProvider()),
-        ChangeNotifierProvider(create: (context) => CartProvider()),
-        ChangeNotifierProvider(create: (context) => OrderProvider()),
-        ChangeNotifierProvider(create: (context) => ProductProvider()),
-        ChangeNotifierProvider(create: (context) => SellerOrderProvider()),
+        Provider(create: (_) => ApiServices()),
+        ChangeNotifierProvider(create: (context) => UserProvider(api: context.read<ApiServices>())),
+        ChangeNotifierProvider(create: (context) => FavoriteProvider(api: context.read<ApiServices>())),
+        ChangeNotifierProvider(create: (context) => CartProvider(api: context.read<ApiServices>())),
+        ChangeNotifierProvider(create: (context) => OrderProvider(api: context.read<ApiServices>())),
+        ChangeNotifierProvider(create: (context) => ProductProvider(api: context.read<ApiServices>())),
+        ChangeNotifierProvider(create: (context) => OrderProvider(api: context.read<ApiServices>())),
       ],
-      child: const MyApp(),
+      child: MyApp(),
     ),
   );
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  late final bool loggedIn;
+  late final String role;
+  MyApp({super.key}) {
+    init();
+  }
+
+  void init() async {
+    loggedIn = await Prefs.checkLogin();
+    if (loggedIn) {
+      var res = await Prefs.readAuth();
+      role = (res['user'] as User).role;
+    }
+  }
 
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
       scrollBehavior: const MaterialScrollBehavior().copyWith(
-        dragDevices: {
-          PointerDeviceKind.mouse,
-          PointerDeviceKind.touch,
-        }
+        dragDevices: {PointerDeviceKind.mouse, PointerDeviceKind.touch},
       ),
       debugShowCheckedModeBanner: false,
       theme: ThemeData.light().copyWith(
-        textTheme: GoogleFonts.urbanistTextTheme(Theme.of(context).textTheme).apply(bodyColor: Colors.white),
+        textTheme: GoogleFonts.urbanistTextTheme(
+          Theme.of(context).textTheme,
+        ).apply(bodyColor: Colors.white),
       ),
-      //home: const LoginScreen(),
-      //home: const BottomNavBar(),
-      //home: const InputAddr(),
-      home: SellerHomeScreen(),
+      home: Consumer<UserProvider>(
+        builder: (_, auth, _) {
+          return FutureBuilder(future: Future.delayed(Duration(seconds: 5)), builder: (context, snapshot){
+            if (loggedIn) {
+              if (role == 'penjual') {
+                return HomeSeller();
+              } else {
+                return HomeCustomer();
+              }
+            }
+            return LoginScreen();
+          });
+        },
+      ),
     );
   }
 }

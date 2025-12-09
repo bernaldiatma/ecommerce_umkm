@@ -20,7 +20,6 @@ dependencies:
 
 
   cupertino_icons: ^1.0.8
-
   google_nav_bar: ^5.0.7 # untuk custom navigation bar
   smooth_page_indicator: ^1.2.1 # Untuk menampilkan indikator titik-titik (dots) yang cantik di bawah PageView (slider gambar)
   flutter_rating_bar: ^4.0.1 # Untuk menampilkan Peringkat Bintang (star rating) dengan mudah
@@ -35,9 +34,12 @@ dependencies:
   onesignal_flutter: ^5.3.4 # Untuk Notifikasi Push (Push Notification)
   google_fonts: ^6.3.2
   intl: ^0.20.2
+  get: ^4.7.3
   readmore: ^3.0.0
   http: ^1.5.0
-
+  http_image_provider: ^1.1.0
+  shared_preferences: ^2.5.3
+  image_picker: ^1.2.1
 
 
 dev_dependencies:

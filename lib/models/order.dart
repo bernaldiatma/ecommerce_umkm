@@ -1,44 +1,70 @@
+import 'package:ecommerce_umkm/models/order_detail.dart';
+
 class Order {
   final String id;
   final String storeName;
-  final String productName;
-  final int quantity;
+  final int qty;
   final double price;
-  final double totalPrice;
-  final String statusOrder;
-  final int receiptNumber;
+  final double total;
+  final String orderStatus;
+  final String waybill;
+  final String expeditionCourier;
+  final String paymentMethod;
+  final String paymentStatus;
+  final List<OrderDetail> orderDetail;
+  final String createdAt;
+  final String updatedAt;
+  final String deleted;
 
-  const Order({
+  Order({
     required this.id,
     required this.storeName,
-    required this.productName,
-    required this.quantity,
+    required this.qty,
     required this.price,
-    required this.totalPrice,
-    required this.statusOrder,
-    required this.receiptNumber,
+    required this.total,
+    required this.orderStatus,
+    required this.waybill,
+    required this.expeditionCourier,
+    required this.paymentMethod,
+    required this.paymentStatus,
+    required this.orderDetail,
+    required this.createdAt,
+    required this.updatedAt,
+    required this.deleted,
   });
 
   factory Order.fromJson(Map<String, dynamic> json) => switch (json) {
     {
       '_id': String id,
       'store_name': String storeName,
-      'product_name': String productName,
-      'quantity': int quantity,
-      'price': double price,
-      'total_price': double totalPrice,
-      'status_order': String statusOrder,
-      'receipt_number': int receiptNumber,
+      'qty': int qty,
+      'price': int price,
+      'total': int total,
+      'order_status': String orderStatus,
+      'waybill': String waybill,
+      'expedition_courier': String expeditionCourier,
+      'payment_method': String paymentMethod,
+      'payment_status': String paymentStatus,
+      'order_detail': List<OrderDetail> orderDetail,
+      'created_at': String createdAt,
+      'updated_at': String updatedAt,
+      'deleted': String deleted,
     } =>
       Order(
         id: id,
         storeName: storeName,
-        productName: productName,
-        quantity: quantity,
-        price: price,
-        totalPrice: totalPrice,
-        statusOrder: statusOrder,
-        receiptNumber: receiptNumber,
+        qty: qty,
+        price: price.toDouble(),
+        total: total.toDouble(),
+        orderStatus: orderStatus,
+        waybill: waybill,
+        expeditionCourier: expeditionCourier,
+        paymentMethod: paymentMethod,
+        paymentStatus: paymentStatus,
+        orderDetail: orderDetail,
+        createdAt: createdAt,
+        updatedAt: updatedAt,
+        deleted: deleted,
       ),
     _ => throw const FormatException('Failed to load Order'),
   };

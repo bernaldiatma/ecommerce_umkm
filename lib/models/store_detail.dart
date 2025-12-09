@@ -17,25 +17,25 @@ class StoreDetail {
     required this.deleted,
   });
 
-  factory StoreDetail.formJson(Map<String, dynamic> json) => switch (json) {
-  {
-    '_user_id': String userId,
-  'store_name': String storeName,
-  'store_desc': String storeDesc,
-  'photo_path': String photoPath,
-  'created_at': String createdAt,
-  'updated-at': String updateAt,
-  'deleted': bool deleted,
-  } =>
-  StoreDetail(
-    userId: userId,
-    storeName: storeName,
-    storeDesc: storeDesc,
-    photoPath: photoPath,
-    createdAt: createdAt,
-    updatedAt: updateAt,
-    deleted: deleted,
-  ),
-  _=> throw const FormatException('Failed to load StoreDetail'),
+  factory StoreDetail.fromJson(Map<String, dynamic> json) => switch (json) {
+    {
+      'user_id': String userId,
+      'store_name': String storeName,
+      'store_desc': String storeDesc,
+      'photo_path': String photoPath,
+      'created_at': String createdAt,
+      'updated-at': String updateAt,
+      'deleted': bool deleted,
+    } =>
+      StoreDetail(
+        userId: userId,
+        storeName: storeName,
+        storeDesc: storeDesc,
+        photoPath: photoPath,
+        createdAt: createdAt,
+        updatedAt: updateAt,
+        deleted: deleted,
+      ),
+    _ => throw const FormatException('Failed to load StoreDetail'),
   };
 }
