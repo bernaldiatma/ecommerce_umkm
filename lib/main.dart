@@ -4,12 +4,14 @@ import 'package:ecommerce_umkm/core/product_provider.dart';
 import 'package:ecommerce_umkm/core/cart_provider.dart';
 import 'package:ecommerce_umkm/core/order_provider.dart';
 import 'package:ecommerce_umkm/core/favorite_provider.dart';
-import 'package:ecommerce_umkm/presentation/expedition/expedition_screen.dart';
+import 'package:ecommerce_umkm/presentation/customer/screens/home_screen/home_screen.dart';
+import 'package:ecommerce_umkm/presentation/expedition/screens/expedition_screen/expedition_screen.dart';
 import 'package:ecommerce_umkm/presentation/login_screen/login_screen.dart';
 import 'package:ecommerce_umkm/presentation/customer/screens/home_customer.dart';
 import 'package:ecommerce_umkm/core/seller_order_provider.dart';
 import 'package:ecommerce_umkm/presentation/seller/screens/home_seller.dart';
 import 'package:ecommerce_umkm/presentation/splash_screeen/splash_screen.dart';
+import 'package:ecommerce_umkm/presentation/widget/google_nav_bar.dart';
 import 'package:ecommerce_umkm/service/api_services.dart';
 import 'package:ecommerce_umkm/service/user_service.dart';
 import 'package:ecommerce_umkm/utility/prefs.dart';
@@ -82,8 +84,9 @@ class MyApp extends StatelessWidget {
               }
             }
             //return LoginScreen();
-            //return SplashScreen(key);
-            return ExpeditionScreen(key);
+            //return HomeCustomer();
+            //return SplashScreen();
+            return ExpeditionScreen();
           });
         },
       ),
