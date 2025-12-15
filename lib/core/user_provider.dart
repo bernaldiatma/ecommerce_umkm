@@ -5,7 +5,7 @@ import 'package:flutter/foundation.dart';
 
 class UserProvider extends ChangeNotifier {
   final ApiServices api;
-  User? _user;
+  User? _user; //null
   bool _loading = false;
   bool _loggedIn = false;
   bool _correctCredentials = false;
@@ -68,8 +68,10 @@ class UserProvider extends ChangeNotifier {
     return false;
   }
 
-  //TODO nganu logout
-  Future<void> logout() async {}
+  Future<bool> logout() async {
+    var res = await Prefs.logout();
+    return res;
+  }
 
   //TODO function function untuk operasi edit profil
 }

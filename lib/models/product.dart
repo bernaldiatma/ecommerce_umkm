@@ -1,18 +1,18 @@
 class Product {
-  final String id;
-  final String storeId;
-  final String ownerId;
-  final String storeName;
-  final String name;
-  final double price;
-  final String desc;
-  final String productPhotoPath;
-  final int stock;
-  final String createdAt;
-  final String updatedAt;
-  final bool deleted;
+  String id;
+  String storeId;
+  String ownerId;
+  String storeName;
+  String name;
+  double price;
+  String desc;
+  String productPhotoPath;
+  int stock;
+  String createdAt;
+  String updatedAt;
+  bool deleted;
 
-  const Product({
+  Product({
     required this.id,
     required this.storeId,
     required this.ownerId,
@@ -32,10 +32,11 @@ class Product {
       '_id': String id,
       'store': {
         "_id": String storeId,
-        "user_id": String ownerId,
-        "store_name": String storeName,
-        "photo_path": String storePhotoPath,
-        "deleted": String storeDeleted,
+        "username": String ownerId,
+        "email": String storeName,
+        "password": String password,
+        "role": String role,
+        "deleted": bool storeDeleted,
         "created_at": String storeCreatedAt,
         "updated_at": String storeUpdatedAt,
       },
@@ -51,7 +52,7 @@ class Product {
       Product(
         id: id,
         storeId: storeId,
-        ownerId: ownerId,
+        ownerId: storeId,
         storeName: storeName,
         name: name,
         price: price.toDouble(),
@@ -79,12 +80,16 @@ class Product {
     'updated_at': updatedAt,
   };
 
-
-  Map<String,dynamic> toJson() => {
+  Map<String, dynamic> toJson() => {
     'store': storeId,
     'name': name,
     'price': price,
     'desc': desc,
-    'product_photo_path': productPhotoPath
+    'stock': stock,
   };
+
+  @override
+  String toString() {
+    return '$id,$storeId,$ownerId,$storeName,$name,$price,$desc,$productPhotoPath,$stock,$createdAt,$updatedAt,$deleted';
+  }
 }

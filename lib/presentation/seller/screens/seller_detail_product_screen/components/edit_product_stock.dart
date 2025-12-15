@@ -1,10 +1,17 @@
 import 'package:ecommerce_umkm/models/product.dart';
 import 'package:flutter/material.dart';
 
-class EditProductStock extends StatelessWidget {
+class EditProductStock extends StatefulWidget {
   final Product product;
 
   const EditProductStock({Key? key, required this.product}) : super(key: key);
+
+  @override
+  State<EditProductStock> createState() => _EditProductStockState();
+}
+
+class _EditProductStockState extends State<EditProductStock> {
+  String stok = '';
 
   @override
   Widget build(BuildContext context) {
@@ -18,20 +25,13 @@ class EditProductStock extends StatelessWidget {
             children: [
               Text(
                 "Stok",
-                style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.black,
-                ),
+                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.black),
               ),
               TextButton.icon(
                 icon: Icon(Icons.edit, size: 12),
                 label: Text(
                   "Edit",
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    color: Colors.deepPurple,
-                  ),
+                  style: TextStyle(fontWeight: FontWeight.bold, color: Colors.deepPurple),
                 ),
                 onPressed: () {
                   showDialog(
@@ -54,6 +54,7 @@ class EditProductStock extends StatelessWidget {
                           children: [
                             SizedBox(
                               child: TextFormField(
+                                initialValue: widget.product.stock.toString(),
                                 style: TextStyle(color: Colors.black),
                                 decoration: InputDecoration(
                                   focusedBorder: OutlineInputBorder(
@@ -65,6 +66,8 @@ class EditProductStock extends StatelessWidget {
                                     borderRadius: BorderRadius.circular(8),
                                   ),
                                 ),
+                                onChanged: (value) => stok = value,
+                                keyboardType: TextInputType.number,
                               ),
                             ),
                             SizedBox(height: 10),
@@ -84,7 +87,12 @@ class EditProductStock extends StatelessWidget {
                                     color: Colors.white,
                                   ),
                                 ),
-                                onPressed: () {},
+                                onPressed: () {
+                                  setState(() {
+                                    widget.product.stock = int.parse(stok);
+                                  });
+                                  Navigator.of(context).pop();
+                                },
                               ),
                             ),
                           ],
@@ -100,7 +108,7 @@ class EditProductStock extends StatelessWidget {
         Padding(
           padding: EdgeInsets.symmetric(horizontal: 20),
           child: Text(
-            product.stock == 0 ? "Habis" : product.stock.toString(),
+            widget.product.stock == 0 ? "Habis" : widget.product.stock.toString(),
             style: TextStyle(
               fontSize: 16,
               fontWeight: FontWeight.bold,

@@ -39,16 +39,16 @@ class ProductProvider extends ChangeNotifier {
     }
   }
 
-  void setPage(int page) {
+  void setPage(int page) async {
     _loading = true;
     notifyListeners();
 
     _currentPage = page;
+    await _getProduct();
     var startIdx = (_currentPage - 1) * 10;
     var tempIdx = startIdx + 10;
     var endIdx = min(tempIdx, _listProduct.length);
     _currentListProduct = listProduct.getRange(startIdx, endIdx).toList();
-
     _loading = false;
     notifyListeners();
   }
@@ -84,10 +84,11 @@ class ProductProvider extends ChangeNotifier {
 
   Future<void> _getProduct() async {
     // var result = await api.product.getProductPerPage(_currentPage);
-    var result = await api.product.getAllProduct();
+    var result = await api.product.getProductPerPage(_currentPage);
     if (result['status']) {
       var data = result['data'];
       if (data.isEmpty) return;
+      print('data masuk');
       if (_listProduct.isEmpty) {
         _listProduct = result['data'];
       } else {
@@ -98,8 +99,13 @@ class ProductProvider extends ChangeNotifier {
     }
   }
 
-  Future<void> addProduct(String name, String price, String desc, File img) async {
-    await api.product.addProduct(name, price, desc, img);
+  Future<bool> addProduct(String storeId, String name, String price, String desc, File img, String stock) async {
+    var result = await api.product.addProduct(storeId, name, price, desc, img, stock);
+    return result['status'];
+  }
+  Future<bool> updateProduct(Product prod, File img) async {
+    var result = await api.product.updateProduct(prod, img);
+    return result['status'];
   }
 
   void updateSuggestion(String query) async {

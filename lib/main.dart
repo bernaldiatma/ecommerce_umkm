@@ -35,11 +35,15 @@ Future<void> main() async {
       providers: [
         Provider(create: (_) => ApiServices()),
         ChangeNotifierProvider(create: (context) => UserProvider(api: context.read<ApiServices>())),
-        ChangeNotifierProvider(create: (context) => FavoriteProvider(api: context.read<ApiServices>())),
+        ChangeNotifierProvider(
+            create: (context) => FavoriteProvider(api: context.read<ApiServices>())),
         ChangeNotifierProvider(create: (context) => CartProvider(api: context.read<ApiServices>())),
-        ChangeNotifierProvider(create: (context) => OrderProvider(api: context.read<ApiServices>())),
-        ChangeNotifierProvider(create: (context) => ProductProvider(api: context.read<ApiServices>())),
-        ChangeNotifierProvider(create: (context) => OrderProvider(api: context.read<ApiServices>())),
+        ChangeNotifierProvider(
+            create: (context) => OrderProvider(api: context.read<ApiServices>())),
+        ChangeNotifierProvider(
+            create: (context) => ProductProvider(api: context.read<ApiServices>())),
+        ChangeNotifierProvider(
+            create: (context) => OrderProvider(api: context.read<ApiServices>())),
       ],
       child: MyApp(),
     ),
@@ -49,6 +53,7 @@ Future<void> main() async {
 class MyApp extends StatelessWidget {
   late final bool loggedIn;
   late final String role;
+
   MyApp({super.key}) {
     init();
   }
@@ -70,23 +75,25 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData.light().copyWith(
         textTheme: GoogleFonts.urbanistTextTheme(
-          Theme.of(context).textTheme,
+          Theme
+              .of(context)
+              .textTheme,
         ).apply(bodyColor: Colors.white),
       ),
       home: Consumer<UserProvider>(
         builder: (_, auth, _) {
-          return FutureBuilder(future: Future.delayed(Duration(seconds: 5)), builder: (context, snapshot){
+          return FutureBuilder(
+              future: Future.delayed(Duration(seconds: 5)), builder: (context, snapshot) {
             if (loggedIn) {
-              if (role == 'penjual') {
+              if (role == 'pembeli') {
+                return HomeCustomer();
+              } else if (role == 'penjual') {
                 return HomeSeller();
               } else {
-                return HomeCustomer();
+                return ExpeditionScreen();
               }
             }
-            //return LoginScreen();
-            //return HomeCustomer();
-            //return SplashScreen();
-            return ExpeditionScreen();
+            return SplashScreen();
           });
         },
       ),

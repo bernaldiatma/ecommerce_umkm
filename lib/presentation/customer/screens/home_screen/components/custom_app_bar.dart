@@ -4,6 +4,7 @@ import 'package:ecommerce_umkm/models/user.dart';
 import 'package:ecommerce_umkm/presentation/customer/screens/cart_screen/cart_screen.dart';
 import 'package:ecommerce_umkm/presentation/customer/screens/home_screen/components/custom_search_bar.dart';
 import 'package:ecommerce_umkm/presentation/customer/screens/notification_screen/notification_screen.dart';
+import 'package:ecommerce_umkm/presentation/login_screen/login_screen.dart';
 import 'package:ecommerce_umkm/utility/constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -20,7 +21,6 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
-    // var user = Provider.of<UserProvider>(context, listen: false);
     return SafeArea(
       child: Padding(
         padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),

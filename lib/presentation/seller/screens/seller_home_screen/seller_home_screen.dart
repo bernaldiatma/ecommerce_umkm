@@ -13,9 +13,10 @@ class SellerHomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final provider = Provider.of<ProductProvider>(context, listen: false);
+    final provider = Provider.of<ProductProvider>(context, listen: true);
     final user = Provider.of<UserProvider>(context, listen: false);
     final List<Product> product = provider.listProduct.where((item) => item.ownerId == user.user!.id).toList();
+    print(provider.listProduct.length);
     return Scaffold(
       backgroundColor: bgColor,
       drawer: HomeSeller(),
@@ -58,7 +59,7 @@ class SellerHomeScreen extends StatelessWidget {
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(12),
                   ),
-                  child: GestureDetector(
+                  child: InkWell(
                     onTap: () {
                       Navigator.push(
                         context,
@@ -106,10 +107,10 @@ class SellerHomeScreen extends StatelessWidget {
                             width: 50,
                             //color: Colors.green,
                             child: Center(
-                              child: Text('90',
-                                // item.stock == 0
-                                //     ? "Habis"
-                                //     : item.stock.toString(),
+                              child: Text(
+                                item.stock == 0
+                                    ? "Habis"
+                                    : item.stock.toString(),
                                 style: TextStyle(
                                   fontSize: 16,
                                   fontWeight: FontWeight.bold,

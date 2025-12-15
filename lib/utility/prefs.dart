@@ -42,4 +42,11 @@ class Prefs {
     if (result >= 5) return true;
     return false;
   }
+
+  static Future<bool> logout() async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setBool('isLoggedIn', false);
+    await prefs.setString('authInfo', '');
+    return true;
+  }
 }

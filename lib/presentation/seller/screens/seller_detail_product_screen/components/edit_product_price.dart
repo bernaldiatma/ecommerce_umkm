@@ -2,11 +2,17 @@ import 'package:ecommerce_umkm/models/product.dart';
 import 'package:ecommerce_umkm/utility/currency_format.dart';
 import 'package:flutter/material.dart';
 
-class EditProductPrice extends StatelessWidget {
+class EditProductPrice extends StatefulWidget {
   final Product product;
 
   const EditProductPrice({Key? key, required this.product}) : super(key: key);
 
+  @override
+  State<EditProductPrice> createState() => _EditProductPriceState();
+}
+
+class _EditProductPriceState extends State<EditProductPrice> {
+  String harga = '';
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -55,6 +61,7 @@ class EditProductPrice extends StatelessWidget {
                           children: [
                             SizedBox(
                               child: TextFormField(
+                                initialValue: widget.product.price.toString(),
                                 style: TextStyle(color: Colors.black),
                                 minLines: 1,
                                 maxLines: 2,
@@ -68,6 +75,8 @@ class EditProductPrice extends StatelessWidget {
                                     borderRadius: BorderRadius.circular(8),
                                   ),
                                 ),
+                                onChanged: (value) => harga = value,
+                                keyboardType: TextInputType.number,
                               ),
                             ),
                             SizedBox(height: 10),
@@ -87,7 +96,12 @@ class EditProductPrice extends StatelessWidget {
                                     color: Colors.white,
                                   ),
                                 ),
-                                onPressed: () {},
+                                onPressed: () {
+                                  setState(() {
+                                    widget.product.price = double.parse(harga);
+                                  });
+                                  Navigator.of(context).pop();
+                                },
                               ),
                             ),
                           ],
@@ -103,7 +117,7 @@ class EditProductPrice extends StatelessWidget {
         Padding(
           padding: EdgeInsets.symmetric(horizontal: 20),
           child: Text(
-            CurrencyFormat.convertToIdr(product.price, 2),
+            CurrencyFormat.convertToIdr(widget.product.price, 2),
             style: TextStyle(
               fontSize: 16,
               fontWeight: FontWeight.bold,

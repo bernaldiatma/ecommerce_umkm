@@ -1,11 +1,17 @@
 import 'package:ecommerce_umkm/models/product.dart';
 import 'package:flutter/material.dart';
 
-class EditProductDescriprion extends StatelessWidget {
+class EditProductDescriprion extends StatefulWidget {
   final Product product;
 
   const EditProductDescriprion({Key? key, required this.product}) : super(key: key);
 
+  @override
+  State<EditProductDescriprion> createState() => _EditProductDescriprionState();
+}
+
+class _EditProductDescriprionState extends State<EditProductDescriprion> {
+  String deskripsi = '';
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -54,6 +60,7 @@ class EditProductDescriprion extends StatelessWidget {
                           children: [
                             SizedBox(
                               child: TextFormField(
+                                initialValue: widget.product.desc,
                                 style: TextStyle(color: Colors.black),
                                 minLines: 10,
                                 maxLines: 20,
@@ -67,6 +74,7 @@ class EditProductDescriprion extends StatelessWidget {
                                     borderRadius: BorderRadius.circular(8),
                                   ),
                                 ),
+                                onChanged: (value) => deskripsi = value,
                               ),
                             ),
                             SizedBox(height: 10),
@@ -86,7 +94,12 @@ class EditProductDescriprion extends StatelessWidget {
                                     color: Colors.white,
                                   ),
                                 ),
-                                onPressed: () {},
+                                onPressed: () {
+                                  setState(() {
+                                    widget.product.desc = deskripsi;
+                                  });
+                                  Navigator.of(context).pop();
+                                },
                               ),
                             ),
                           ],
@@ -102,7 +115,7 @@ class EditProductDescriprion extends StatelessWidget {
         Padding(
           padding: EdgeInsets.symmetric(horizontal: 20),
           child: Text(
-            product.desc,
+            widget.product.desc,
             style: TextStyle(
               fontSize: 16,
               fontWeight: FontWeight.bold,
