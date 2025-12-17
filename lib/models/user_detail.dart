@@ -16,4 +16,5 @@ class UserDetail {
       UserDetail(id: id, name: name, address: address, photo: photo),
     _ => throw const FormatException('Failed to load UserDetail'),
   };
+
 }

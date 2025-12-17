@@ -33,7 +33,7 @@ class HomeScreen extends StatelessWidget {
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 20),
                   child: Text(
-                    "Kategori",
+                    "Produk",
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       color: Colors.black,
@@ -41,8 +41,8 @@ class HomeScreen extends StatelessWidget {
                     ),
                   ),
                 ),
-                CategorySelector(),
-                SizedBox(height: 8),
+                //CategorySelector(),
+                SizedBox(height: 10),
                 ProductGridView(),
                 SizedBox(height: 8),
               ],

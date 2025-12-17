@@ -53,24 +53,24 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                         child: Icon(Icons.shopping_cart_outlined, size: 24, color: Colors.black),
                       ),
                     ),
-                    SizedBox(width: 10),
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (_) => NotificationScreen()),
-                        );
-                      },
-                      child: CircleAvatar(
-                        radius: 22,
-                        backgroundColor: Colors.white,
-                        child: Icon(
-                          Icons.notifications_none_outlined,
-                          size: 24,
-                          color: Colors.black,
-                        ),
-                      ),
-                    ),
+                    // SizedBox(width: 10),
+                    // GestureDetector(
+                    //   onTap: () {
+                    //     Navigator.push(
+                    //       context,
+                    //       MaterialPageRoute(builder: (_) => NotificationScreen()),
+                    //     );
+                    //   },
+                    //   child: CircleAvatar(
+                    //     radius: 22,
+                    //     backgroundColor: Colors.white,
+                    //     child: Icon(
+                    //       Icons.notifications_none_outlined,
+                    //       size: 24,
+                    //       color: Colors.black,
+                    //     ),
+                    //   ),
+                    // ),
                   ],
                 ),
               ],
@@ -79,16 +79,16 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                AppBarActionButton(
-                  icon: Icons.menu,
-                  onPressed: () {
-                    final box = GetStorage();
-                    Map<String, dynamic>? userJson = box.read(USER_INFO_BOX);
-                    //TODO: Nunggu ada model user
-                    //User? userLogged = User.fromJson(userJson ?? {});
-                    Scaffold.of(context).openDrawer();
-                  },
-                ),
+                // AppBarActionButton(
+                //   icon: Icons.menu,
+                //   onPressed: () {
+                //     final box = GetStorage();
+                //     Map<String, dynamic>? userJson = box.read(USER_INFO_BOX);
+                //     //TODO: Nunggu ada model user
+                //     //User? userLogged = User.fromJson(userJson ?? {});
+                //     Scaffold.of(context).openDrawer();
+                //   },
+                // ),
                 // Expanded(
                 //   child: CustomSearchBar(
                 //     controller: TextEditingController(),
